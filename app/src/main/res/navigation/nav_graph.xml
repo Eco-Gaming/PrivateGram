@@ -3,26 +3,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
-
+    app:startDestination="@id/homeFragment">
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="me.ecogaming.privategram.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
-
+        android:id="@+id/homeFragment"
+        android:name="me.ecogaming.privategram.fragments.HomeFragment"
+        android:label="@string/home_view"
+        tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_homeFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="me.ecogaming.privategram.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
-
+        android:id="@+id/aboutFragment"
+        android:name="me.ecogaming.privategram.fragments.AboutFragment"
+        android:label="@string/about_view"
+        tools:layout="@layout/fragment_about" >
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_aboutFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="me.ecogaming.privategram.fragments.SearchFragment"
+        android:label="@string/search_view"
+        tools:layout="@layout/fragment_search" />
 </navigation>
