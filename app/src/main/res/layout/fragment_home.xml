@@ -6,13 +6,42 @@
     android:layout_height="match_parent"
     tools:context=".fragments.HomeFragment">
 
-    <TextView
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:hint="@string/enter_profile_name"
+        android:id="@+id/text_input_profile_name_layout">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            style="@style/Widget.MaterialComponents.TextInputEditText.FilledBox"
+            android:id="@+id/text_input_profile_name"
+            android:inputType="text"
+            android:maxLines="1"
+            android:maxLength="20"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/text_input_profile_name_layout"
+        android:id="@+id/button_open_profile"
+        android:text="@string/button_open_profile"/>
+
+    <ProgressBar
+        android:id="@+id/searchProgressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:text="There will be a Home feed here at some point"/>
+        android:indeterminate="true"
+        android:visibility="gone" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

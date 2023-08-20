@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="PrivateGramTabAppearance" parent="Widget.MaterialComponents.TabLayout">
+        <item name="tabTextAppearance">?android:attr/textAppearanceButton</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="tabIndicatorHeight">3dp</item>
+    </style>
+</resources>
