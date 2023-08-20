@@ -1,17 +1,15 @@
 package me.ecogaming.privategram
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.NavigationUiSaveStateControl
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
-import androidx.navigation.ui.NavigationUI
 import com.google.android.material.navigation.NavigationBarView
 import me.ecogaming.privategram.databinding.ActivityMainBinding
 
@@ -21,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navView: NavigationBarView
     private lateinit var binding: ActivityMainBinding
 
+    @OptIn(NavigationUiSaveStateControl::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)

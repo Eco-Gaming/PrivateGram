@@ -5,16 +5,28 @@
     <string name="about_view">About</string>
     <string name="search_view">Search</string>
 
+    <string name="about_text">This is currently an unfinished, super basic app that uses Proxigram as a backend to fetch data from Instagram.</string>
+
     <string name="enter_profile_name">Enter profile name…</string>
     <string name="button_open_profile">Open profile</string>
 
     <string name="loading_profile">Loading profile…</string>
     <string name="profile_picture_description">Profile picture</string>
+    <string name="profile_post_amount">%1$s\nPosts</string>
+    <string name="profile_follower_amount">%1$s\nFollowers</string>
+    <string name="profile_following_amount">%1$s\nFollowing</string>
+
+    <string name="error_empty_profile">Please enter a profile name to open the profile!</string>
+    <string name="error_could_not_open_profile">Could not open profile! Please try again later. (%1$s)</string>
+    <string name="error_could_not_find_profile">Could not find profile! Check your spelling and try again.</string>
+    <string name="error_timeout">The request timed out! Please try again later.</string>
+
+    <string name="search_placeholder">The search feature will be implemented later</string>
+    <string name="no_search_results">No search results</string>
+
     <string name="text_post_amount_placeholder">63\nPosts</string>
     <string name="text_follower_amount_placeholder">3924\nFollowers</string>
     <string name="text_following_amount_placeholder">326\nFollowing</string>
     <string name="text_fullname_placeholder">Name</string>
     <string name="text_biography_placeholder">Profile\nDescription\nHere</string>
-
-    <string name="no_search_results">No search results</string>
 </resources>

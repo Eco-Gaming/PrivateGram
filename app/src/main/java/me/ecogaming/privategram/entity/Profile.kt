@@ -6,8 +6,8 @@ data class Profile(
     val isPrivate: Boolean,
     val fullname: String,
     val biography: String,
-    val tags: Array<String>,
-    val users: Array<String>,
+    val tags: List<String>,
+    val users: List<String>,
     val mediaCount: Int,
     val followers: Int,
     val following: Int

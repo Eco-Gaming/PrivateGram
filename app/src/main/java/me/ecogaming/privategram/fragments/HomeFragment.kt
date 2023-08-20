@@ -77,7 +77,8 @@ class HomeFragment : Fragment() {
     private fun openProfile() {
         val profileName = binding.textInputProfileName.text.toString()
         if (profileName.isEmpty()) {
-            // TODO: some error message
+            val text = getString(R.string.error_empty_profile)
+            Toast.makeText(requireContext(), text, Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -92,11 +93,12 @@ class HomeFragment : Fragment() {
         }
         viewModel.error.observe(viewLifecycleOwner) {
             if (it != null) {
-                var text = "Couldn't open profile, try again later (" + it.statusCode + (if (it.message.isNotEmpty()) " " + it.message else "") + ")"
+                val errorInfo = it.statusCode.toString() + (if (it.message.isNotEmpty()) " " + it.message else "")
+                var text = getString(R.string.error_could_not_open_profile, errorInfo)
                 if (it.statusCode == 404) {
-                    text = "Couldn't find profile, maybe check your spelling?"
+                    text = getString(R.string.error_could_not_find_profile)
                 } else if (it.statusCode == -1) {
-                    text = "timeout"
+                    text = getString(R.string.error_timeout)
                 }
                 Toast.makeText(requireContext(), text, Toast.LENGTH_SHORT).show()
                 loading(false)

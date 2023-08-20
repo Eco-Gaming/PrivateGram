@@ -51,9 +51,9 @@ class ProfileFragment : Fragment() {
             // .error(R.drawable.error_image) // Error image if loading fails
             .into(binding.profilePicture)
 
-        binding.textPostAmount.text = profile.mediaCount.toString() + "\nPosts"
-        binding.textFollowerAmount.text = profile.followers.toString() + "\nFollowers"
-        binding.textFollowingAmount.text = profile.following.toString() + "\nFollowing"
+        binding.textPostAmount.text = getString(R.string.profile_post_amount, profile.mediaCount.toString())
+        binding.textFollowerAmount.text = getString(R.string.profile_follower_amount, profile.followers.toString())
+        binding.textFollowingAmount.text = getString(R.string.profile_following_amount, profile.following.toString())
 
         binding.textFullname.text = profile.fullname
         binding.textBiography.text = profile.biography
