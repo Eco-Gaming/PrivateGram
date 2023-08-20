@@ -8,5 +8,7 @@
     <string name="enter_profile_name">Enter profile name…</string>
     <string name="button_open_profile">Open profile</string>
 
+    <string name="loading_profile">Loading profile…</string>
+
     <string name="no_search_results">No search results</string>
 </resources>

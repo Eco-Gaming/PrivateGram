@@ -33,7 +33,7 @@
     <fragment
         android:id="@+id/profileFragment"
         android:name="me.ecogaming.privategram.fragments.ProfileFragment"
-        android:label="fragment_profile"
+        android:label="@string/loading_profile"
         tools:layout="@layout/fragment_profile" >
         <action
             android:id="@+id/action_profileFragment_to_homeFragment"

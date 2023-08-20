@@ -92,7 +92,7 @@ class HomeFragment : Fragment() {
         }
         viewModel.error.observe(viewLifecycleOwner) {
             if (it != null) {
-                var text = "Couldn't open profile, try again later"
+                var text = "Couldn't open profile, try again later (" + it.statusCode + (if (it.message.isNotEmpty()) " " + it.message else "") + ")"
                 if (it.statusCode == 404) {
                     text = "Couldn't find profile, maybe check your spelling?"
                 } else if (it.statusCode == -1) {
