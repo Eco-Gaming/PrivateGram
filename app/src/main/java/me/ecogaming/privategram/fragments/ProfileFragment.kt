@@ -65,7 +65,7 @@ class ProfileFragment : Fragment() {
         binding.textFollowingAmount.text = getString(R.string.profile_following_amount, profile.following.toString())
 
         binding.textFullname.text = profile.fullname
-        binding.textBiography.text = profile.biography
+        binding.textBiography.text = profile.biography.trim()
 
         viewModel.getProfileFeed(profile.username)
         viewModel.posts.observe(viewLifecycleOwner) {
@@ -89,6 +89,7 @@ class ProfileFragment : Fragment() {
     }
 
     private fun adapterOnClick(post: Post) {
+        postViewModel.profile.value = profile
         postViewModel.post.value = post
         findNavController().navigate(R.id.action_profileFragment_to_postFragment)
     }

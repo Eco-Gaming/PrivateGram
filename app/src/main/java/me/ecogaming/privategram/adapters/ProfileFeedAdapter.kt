@@ -9,33 +9,39 @@ import com.squareup.picasso.Picasso
 import me.ecogaming.privategram.R
 import me.ecogaming.privategram.entity.Post
 
-class ProfileFeedAdapter(private val onClick: (Post) -> Unit, private val posts: List<Post>) : RecyclerView.Adapter<ProfileFeedAdapter.ViewHolder>() {
+class ProfileFeedAdapter(private val onClick: (Post) -> Unit, private val posts: List<Post>) : RecyclerView.Adapter<ProfileFeedAdapter.PostViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_profile_feed_post, parent, false)
-        return ViewHolder(view, onClick)
+        return PostViewHolder(view, onClick)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
         val post = posts[position]
-        val imageUrl = post.thumb
-        Picasso.get().load(imageUrl).into(holder.imageView)
+        holder.bind(post)
     }
 
     override fun getItemCount(): Int {
         return posts.size
     }
 
-    inner class ViewHolder(itemView: View, val onClick: (Post) -> Unit) : RecyclerView.ViewHolder(itemView) {
-        val imageView: ImageView = itemView.findViewById(R.id.profile_feed_image)
+    inner class PostViewHolder(itemView: View, val onClick: (Post) -> Unit) : RecyclerView.ViewHolder(itemView) {
+        private val profileFeedImage: ImageView = itemView.findViewById(R.id.profile_feed_image)
         private var currentPost: Post? = null
 
         init {
-            imageView.setOnClickListener {
+            profileFeedImage.setOnClickListener {
                 currentPost?.let {
                     onClick(it)
                 }
             }
+        }
+
+        fun bind(post: Post) {
+            currentPost = post
+
+            val imageUrl = post.thumb
+            Picasso.get().load(imageUrl).into(profileFeedImage)
         }
     }
 }
