@@ -22,12 +22,15 @@
     <string name="error_could_not_find_profile">Could not find profile! Check your spelling and try again.</string>
     <string name="error_timeout">The request timed out! Please try again later.</string>
 
+    <string name="post_view">Post</string>
+
     <string name="search_placeholder">The search feature will be implemented later</string>
     <string name="no_search_results">No search results</string>
 
+    <string name="text_username_placeholder">username</string>
     <string name="text_post_amount_placeholder">63\nPosts</string>
     <string name="text_follower_amount_placeholder">3924\nFollowers</string>
     <string name="text_following_amount_placeholder">326\nFollowing</string>
-    <string name="text_fullname_placeholder">Name</string>
+    <string name="text_fullname_placeholder">Full Name</string>
     <string name="text_biography_placeholder">Profile\nDescription\nHere</string>
 </resources>

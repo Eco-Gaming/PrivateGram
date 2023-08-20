@@ -7,12 +7,15 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import me.ecogaming.privategram.R
 import me.ecogaming.privategram.adapters.ProfileFeedAdapter
 import me.ecogaming.privategram.databinding.FragmentProfileBinding
+import me.ecogaming.privategram.entity.Post
 import me.ecogaming.privategram.entity.Profile
+import me.ecogaming.privategram.viewmodels.PostViewModel
 import me.ecogaming.privategram.viewmodels.ProfileViewModel
 
 class ProfileFragment : Fragment() {
@@ -20,6 +23,7 @@ class ProfileFragment : Fragment() {
     private var _binding: FragmentProfileBinding? = null
 
     private val viewModel: ProfileViewModel by activityViewModels()
+    private val postViewModel: PostViewModel by activityViewModels()
 
     private lateinit var profile: Profile
 
@@ -66,7 +70,7 @@ class ProfileFragment : Fragment() {
         viewModel.getProfileFeed(profile.username)
         viewModel.posts.observe(viewLifecycleOwner) {
             if (it != null) {
-                val adapter = ProfileFeedAdapter(it)
+                val adapter = ProfileFeedAdapter({ post -> adapterOnClick(post) }, it)
                 recyclerView.adapter = adapter
                 binding.searchProgressBar.visibility = View.GONE
             }
@@ -82,5 +86,10 @@ class ProfileFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun adapterOnClick(post: Post) {
+        postViewModel.post.value = post
+        findNavController().navigate(R.id.action_profileFragment_to_postFragment)
     }
 }

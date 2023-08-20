@@ -9,11 +9,11 @@ import com.squareup.picasso.Picasso
 import me.ecogaming.privategram.R
 import me.ecogaming.privategram.entity.Post
 
-class ProfileFeedAdapter(private val posts: List<Post>) : RecyclerView.Adapter<ProfileFeedAdapter.ViewHolder>() {
+class ProfileFeedAdapter(private val onClick: (Post) -> Unit, private val posts: List<Post>) : RecyclerView.Adapter<ProfileFeedAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_profile_feed_post, parent, false)
-        return ViewHolder(view)
+        return ViewHolder(view, onClick)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -26,7 +26,16 @@ class ProfileFeedAdapter(private val posts: List<Post>) : RecyclerView.Adapter<P
         return posts.size
     }
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(itemView: View, val onClick: (Post) -> Unit) : RecyclerView.ViewHolder(itemView) {
         val imageView: ImageView = itemView.findViewById(R.id.profile_feed_image)
+        private var currentPost: Post? = null
+
+        init {
+            imageView.setOnClickListener {
+                currentPost?.let {
+                    onClick(it)
+                }
+            }
+        }
     }
 }

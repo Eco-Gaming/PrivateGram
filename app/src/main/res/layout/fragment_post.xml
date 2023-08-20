@@ -6,13 +6,48 @@
     android:layout_height="match_parent"
     tools:context=".fragments.PostFragment">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <!-- Post header -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/post_header_layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="12dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="@string/about_text" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/post_header_profile_picture"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:padding="4dp"
+            android:src="@drawable/generic_profile_placeholder"/>
+
+        <TextView
+            android:id="@+id/post_header_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/post_header_profile_picture"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:padding="4dp"
+            android:text="@string/text_username_placeholder"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- horizontally swipeable imageViews -->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxHeight="512dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/post_header_layout" />
+
+    <!-- stats bar (likes, comment amount, ...) -->
+
+    <!-- comments RecyclerView -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
