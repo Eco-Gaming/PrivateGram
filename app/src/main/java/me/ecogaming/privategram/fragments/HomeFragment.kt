@@ -71,6 +71,7 @@ class HomeFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        loading(false)
         _binding = null
     }
 
@@ -86,9 +87,14 @@ class HomeFragment : Fragment() {
         viewModel.profile.observe(viewLifecycleOwner) {
             if (it != null) {
                 profileViewModel.profile.value = it
-                findNavController().navigate(R.id.action_homeFragment_to_profileFragment)
+                if (it.isPrivate) {
+                    val text = getString(R.string.error_profile_private)
+                    Toast.makeText(requireContext(), text, Toast.LENGTH_LONG).show()
+                } else {
+                    findNavController().navigate(R.id.action_homeFragment_to_profileFragment)
+                    viewModel.profile.removeObservers(viewLifecycleOwner)
+                }
                 loading(false)
-                viewModel.profile.removeObservers(viewLifecycleOwner)
             }
         }
         viewModel.error.observe(viewLifecycleOwner) {

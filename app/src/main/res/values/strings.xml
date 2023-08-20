@@ -17,6 +17,7 @@
     <string name="profile_following_amount">%1$s\nFollowing</string>
 
     <string name="error_empty_profile">Please enter a profile name to open the profile!</string>
+    <string name="error_profile_private">The specified profile is private! Currently only public profiles are supported.</string>
     <string name="error_could_not_open_profile">Could not open profile! Please try again later. (%1$s)</string>
     <string name="error_could_not_find_profile">Could not find profile! Check your spelling and try again.</string>
     <string name="error_timeout">The request timed out! Please try again later.</string>
