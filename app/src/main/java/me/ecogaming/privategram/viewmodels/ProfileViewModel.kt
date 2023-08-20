@@ -21,7 +21,7 @@ class ProfileViewModel : ViewModel() {
     fun getProfileFeed(username: String) {
         viewModelScope.launch {
             try {
-                posts.value = ProxigramNetwork.retrofit.getProfileFeed(username)
+                posts.value = ProxigramNetwork.retrofit.getProfileFeed(username).posts
                 error.postValue(null)
             } catch (e: HttpException) {
                 posts.postValue(null)

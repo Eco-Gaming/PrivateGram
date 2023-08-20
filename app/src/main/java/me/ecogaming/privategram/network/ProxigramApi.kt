@@ -2,7 +2,7 @@ package me.ecogaming.privategram.network
 
 import me.ecogaming.privategram.entity.Comment
 import me.ecogaming.privategram.entity.DetailedPost
-import me.ecogaming.privategram.entity.Post
+import me.ecogaming.privategram.entity.PostList
 import me.ecogaming.privategram.entity.Profile
 import me.ecogaming.privategram.entity.TaggedPostsResults
 import retrofit2.http.GET
@@ -25,7 +25,7 @@ interface ProxigramApi {
     suspend fun getProfileFeed(
         @Path("username") username: String,
         @Query("cursor") cursor: String? = null
-    ): List<Post>
+    ): PostList
 
     @GET("/api/p/{shortcode}")
     suspend fun getPost(

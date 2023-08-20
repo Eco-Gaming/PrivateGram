@@ -10,6 +10,7 @@ import androidx.fragment.app.activityViewModels
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import me.ecogaming.privategram.R
+import me.ecogaming.privategram.adapters.ProfileFeedAdapter
 import me.ecogaming.privategram.databinding.FragmentProfileBinding
 import me.ecogaming.privategram.entity.Profile
 import me.ecogaming.privategram.viewmodels.ProfileViewModel
@@ -41,6 +42,10 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.searchProgressBar.visibility = View.VISIBLE
+
+        val recyclerView = binding.feedRecyclerView
+
         (activity as AppCompatActivity).supportActionBar?.title = profile.username
 
         // Load and display the profile picture using Glide
@@ -61,12 +66,15 @@ class ProfileFragment : Fragment() {
         viewModel.getProfileFeed(profile.username)
         viewModel.posts.observe(viewLifecycleOwner) {
             if (it != null) {
-                // TODO: add posts to some kind of array for later displaying
+                val adapter = ProfileFeedAdapter(it)
+                recyclerView.adapter = adapter
+                binding.searchProgressBar.visibility = View.GONE
             }
         }
         viewModel.error.observe(viewLifecycleOwner) {
             if (it != null) {
                 // TODO: add error handling
+                binding.searchProgressBar.visibility = View.GONE
             }
         }
     }
