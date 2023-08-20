@@ -57,6 +57,18 @@ class ProfileFragment : Fragment() {
 
         binding.textFullname.text = profile.fullname
         binding.textBiography.text = profile.biography
+
+        viewModel.getProfileFeed(profile.username)
+        viewModel.posts.observe(viewLifecycleOwner) {
+            if (it != null) {
+                // TODO: add posts to some kind of array for later displaying
+            }
+        }
+        viewModel.error.observe(viewLifecycleOwner) {
+            if (it != null) {
+                // TODO: add error handling
+            }
+        }
     }
 
     override fun onDestroyView() {
