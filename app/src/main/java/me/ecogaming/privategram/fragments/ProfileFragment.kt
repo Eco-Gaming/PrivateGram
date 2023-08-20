@@ -7,6 +7,9 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+import me.ecogaming.privategram.R
 import me.ecogaming.privategram.databinding.FragmentProfileBinding
 import me.ecogaming.privategram.entity.Profile
 import me.ecogaming.privategram.viewmodels.ProfileViewModel
@@ -39,6 +42,21 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         (activity as AppCompatActivity).supportActionBar?.title = profile.username
+
+        // Load and display the profile picture using Glide
+        Glide.with(this)
+            .load(profile.profilePicture)
+            .apply(RequestOptions.circleCropTransform()) // Apply circle crop transformation for rounded profile pictures
+            .placeholder(R.drawable.generic_profile_placeholder) // Placeholder image while loading
+            // .error(R.drawable.error_image) // Error image if loading fails
+            .into(binding.profilePicture)
+
+        binding.textPostAmount.text = profile.mediaCount.toString() + "\nPosts"
+        binding.textFollowerAmount.text = profile.followers.toString() + "\nFollowers"
+        binding.textFollowingAmount.text = profile.following.toString() + "\nFollowing"
+
+        binding.textFullname.text = profile.fullname
+        binding.textBiography.text = profile.biography
     }
 
     override fun onDestroyView() {

@@ -9,6 +9,12 @@
     <string name="button_open_profile">Open profile</string>
 
     <string name="loading_profile">Loading profile…</string>
+    <string name="profile_picture_description">Profile picture</string>
+    <string name="text_post_amount_placeholder">63\nPosts</string>
+    <string name="text_follower_amount_placeholder">3924\nFollowers</string>
+    <string name="text_following_amount_placeholder">326\nFollowing</string>
+    <string name="text_fullname_placeholder">Name</string>
+    <string name="text_biography_placeholder">Profile\nDescription\nHere</string>
 
     <string name="no_search_results">No search results</string>
 </resources>
