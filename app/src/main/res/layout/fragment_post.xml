@@ -37,9 +37,9 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!-- horizontally swipeable imageViews -->
-    <ImageView
-        android:id="@+id/post_image"
+    <!-- horizontally swipeable images -->
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/post_images_view_pager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:maxHeight="512dp"
@@ -50,5 +50,18 @@
     <!-- stats bar (likes, comment amount, ...) -->
 
     <!-- comments RecyclerView -->
+
+    <!-- loading symbol -->
+    <ProgressBar
+        android:id="@+id/searchProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/post_images_view_pager"
+        app:layout_constraintBottom_toBottomOf="@id/post_images_view_pager"
+        android:indeterminate="true"
+        android:visibility="gone" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

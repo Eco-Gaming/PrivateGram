@@ -7,7 +7,7 @@ object ProxigramNetwork {
 
     val retrofit: ProxigramApi by lazy {
         Retrofit.Builder()
-            .baseUrl("http://192.168.1.122:3000")
+            .baseUrl("https://proxigram.protokolla.fi/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(ProxigramApi::class.java)

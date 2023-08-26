@@ -3,6 +3,7 @@ package me.ecogaming.privategram.viewmodels
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import me.ecogaming.privategram.entity.Comment
 import me.ecogaming.privategram.entity.DetailedPost
@@ -26,7 +27,10 @@ class PostViewModel : ViewModel() {
     fun getDetailedPostAndComments(shortcode: String) {
         viewModelScope.launch {
             try {
+                // add delay between requests to prevent error 403
+                delay(500)
                 detailedPost.value = ProxigramNetwork.retrofit.getPost(shortcode)
+                delay(500)
                 comments.value = ProxigramNetwork.retrofit.getPostComments(shortcode)
                 error.postValue(null)
             } catch (e: HttpException) {

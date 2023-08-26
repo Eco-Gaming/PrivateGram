@@ -6,7 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import com.squareup.picasso.Picasso
+import androidx.viewpager2.widget.ViewPager2
+import me.ecogaming.privategram.adapters.ImageAdapter
 import me.ecogaming.privategram.databinding.FragmentPostBinding
 import me.ecogaming.privategram.viewmodels.PostViewModel
 
@@ -33,12 +34,23 @@ class PostFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.searchProgressBar.visibility = View.VISIBLE
+
         binding.postHeaderUsername.text = viewModel.profile.value?.username ?: "failed getting username :("
 
         viewModel.post.value?.shortcode?.let { viewModel.getDetailedPostAndComments(it) }
         viewModel.detailedPost.observe(viewLifecycleOwner) {
+            if (it != null && it.isSideCard) {
+                val viewPager: ViewPager2 = binding.postImagesViewPager
+                val imageAdapter = ImageAdapter(it.sidecard)
+                viewPager.adapter = imageAdapter
+                binding.searchProgressBar.visibility = View.GONE
+            }
+        }
+        viewModel.error.observe(viewLifecycleOwner) {
             if (it != null) {
-                Picasso.get().load(it.sidecard[0].url).into(binding.postImage)
+                // TODO: add error handling
+                binding.searchProgressBar.visibility = View.GONE
             }
         }
     }
